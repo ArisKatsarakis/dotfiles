@@ -4,10 +4,10 @@
 sudo pacamn -S neovim npm gcc lazygsit
 ``
 2. git clone lazyvim
-``
+```bash
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
-``
+```
 3. Install dap.core
   - Open Mason
   - enable dap.core
