@@ -50,7 +50,7 @@ return {
 6. Install git theme
     - create file colorscheme.lua in .config/nvim/lua/plugins folder
     - 
-    ```lua:
+    ```lua
 -- Install without configuration
 { 'projekt0n/github-nvim-theme' }
 
