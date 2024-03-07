@@ -12,7 +12,7 @@ rm -rf ~/.config/nvim/.git
   - Open Mason
   - enable dap.core
   - add the following code in .config/nvim/lua/plugins/java/init.lua
-  ```lua:
+  ```lua
 return {
   "nvim-java/nvim-java",
   dependencies = {
