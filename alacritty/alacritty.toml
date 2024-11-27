@@ -1,0 +1,18 @@
+live_config_reload = true
+import = [
+    "/Users/macbook/.config/alacritty/alacritty-theme/themes/nordic.toml"
+]
+[env]
+TERM = "xterm-256color"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 0.9
+[font]
+size = 14.0
+
+[font.normal]
+family = "SFMono Nerd Font"
+style = "Regular"
+
