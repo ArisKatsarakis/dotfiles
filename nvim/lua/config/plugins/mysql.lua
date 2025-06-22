@@ -16,5 +16,7 @@ return {
     vim.g.dbs = {
       { name = 'dev', url = 'postgres://postgres:postgres@localhost:5438/postgres' },
     }
+
+    vim.keymap.set("n", "<leader>pd", ":DBUIToggle<CR>", { desc = "Open DBUI for databases" })
   end,
 }
