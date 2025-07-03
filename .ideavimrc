@@ -1,0 +1,100 @@
+
+"" Base Settings
+"" ========================================================
+
+set scrolloff=10
+set linenumber
+set showmode
+set showcmd
+
+set smartcase
+set incsearch
+set hlsearch
+
+set visualbell
+
+" Use system clipboard
+set clipboard+=unnamed
+
+let mapleader = " "
+
+
+"" Plugin Settings
+"" ========================================================
+Plug 'tpope/vim-surround'
+set highlightedyank
+set sneak
+set nerdtree
+
+"" Key mappings
+"" ========================================================
+
+" Tab navigation e
+nnoremap L :tabnext<CR>
+nnoremap H :tabprev<CR>
+
+" Pane navigation
+nnoremap <A-h> <C-w>h
+nnoremap <A-l> <C-w>l
+nnoremap <A-k> <C-w>k
+nnoremap <A-j> <C-w>j
+
+" Comment lines
+map <leader>gc <action>(CommentByLineComment)
+
+" Execute macro saved in 'q' register
+nnoremap qj @q
+
+" Popup navigation
+inoremap <C-j> <Action>(PopupMenu-selectNext)
+inoremap <C-k> <Action>(PopupMenu-selectPrev)
+
+
+"" Leader commands
+"" ========================================================
+
+" Comment lines
+map <leader>gc <action>(CommentByLineComment)
+
+" Open NERDTree (use q to exit)
+map <leader>e :NERDTreeToggle<CR>
+
+" Window splits
+map <leader>wv <Action>(SplitVertically)
+map <leader><leader> <action>(SearchEverywhere)
+map <leader>ca <action>(ShowIntentionActions)
+
+" Display options
+map <leader>dd <action>(ToggleDistractionFreeMode)
+map <leader>dz <action>(ToggleZenMode)
+map <leader>df <action>(ToggleFullScreen)
+
+" Actions
+
+" Close active tab
+map <leader>bd <action>(CloseContent)
+
+" Refactoring
+map <leader>rn <Action>(RenameElement)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rf <Action>(IntroduceField)
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+" Go to code
+nmap gd <Action>(GotoDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap gu <Action>(ShowUsages)
+
+" Git windows
+map <leader>gg <Action>(CheckinProject)
+map <leader>gs <Action>(ActivateVersionControlToolWindow)
+map <leader>gb <Action>(Git.Branches)
+
+
+nmap <leader>cf <Action>(Format)
+vmap <leader>cf <Action>(Format)
+nmap <leader>ff <Action>(ActivateStructureToolWindow)
+nmap <leader>cc  <Action>(CloseActiveTab)
+nmap <leader>fb <Action>(Switcher)
