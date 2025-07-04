@@ -28,6 +28,7 @@ return {
       })
       lspconfig['gopls'].setup({ capabilities = capabilities })
 
+      lspconfig['typescript-language-server'].setup({ capabilities = capabilities })
       vim.keymap.set("n", "gd", function()
         local result = vim.lsp.buf.definition()
         if not result or not result[1] then

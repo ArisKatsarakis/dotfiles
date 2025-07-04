@@ -55,11 +55,11 @@ require("lazy").setup({
     --     vim.cmd([[colorscheme aura-dark]])
     --   end
     -- },
-    {
-      'tribela/transparent.nvim',
-      event = 'VimEnter',
-      config = true,
-    },
+    -- {
+    --   'tribela/transparent.nvim',
+    --   event = 'VimEnter',
+    --   config = true,
+    -- },
     {
       'nvim-lualine/lualine.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -88,7 +88,7 @@ require("lazy").setup({
         require("rose-pine").setup({
           variant = "moon",      -- auto, main, moon, or dawn
           dark_variant = "moon", -- main, moon, or dawn
-          dim_inactive_windows = false,
+          dim_inactive_windows = true,
           extend_background_behind_borders = true,
 
           enable = {
@@ -100,7 +100,7 @@ require("lazy").setup({
           styles = {
             bold = true,
             italic = true,
-            transparency = true,
+            transparency = false,
           },
 
           groups = {

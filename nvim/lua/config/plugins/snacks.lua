@@ -27,5 +27,7 @@ return {
     { "<leader><space>", function() Snacks.picker.smart() end,               desc = "Smart Find Files" },
     { "gi",              function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
     { "<leader>cc",      "<Cmd>:close<CR>",                                  desc = "close window" },
+    { "<leader>bs",      function() Snacks.scratch() end,                    desc = "Toggle Scratch Buffer" },
+    { "<leader>bS",      function() Snacks.scratch.select() end,             desc = "Select Scratch Buffer" },
   }
 }

@@ -95,5 +95,16 @@ function ProjecBuildTerm()
   end
 end
 
+function CloseBuildTerm()
+  if vim.api.nvim_win_is_valid(buildState.floating.win) then
+    if build_job_id ~= 0 then
+      vim.fn.chansend(build_job_id, { "exit \r\n" })
+      vim.api.nvim_win_close(buildState.floating.win, true)
+      vim.api.nvim_buf_delete(buildState.floating.buf, { force = true })
+    end
+  end
+end
+
 vim.keymap.set("n", "<leader>pp", PostingTerm, { desc = "Open posting terminal" })
 vim.keymap.set("n", "<leader>pb", ProjecBuildTerm, { desc = "Open Terminal for build project" })
+vim.keymap.set("n", "<leader>pbc", CloseBuildTerm, { desc = "Close Build Terminal" })
