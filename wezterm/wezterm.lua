@@ -36,7 +36,7 @@ wezterm.on("gui-startup", function(cmd)
 	window:gui_window():maximize()
 end)
 
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 }
+config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
 -- split wezterm to panes
 local direction_keys = {
 	h = "Left",
@@ -118,10 +118,10 @@ config.keys = {
 		action = action.ActivateTabRelative(1),
 	},
 	{ key = "[", mods = "LEADER", action = action.ActivateCopyMode },
-	split_nav("move", "h"),
-	split_nav("move", "j"),
-	split_nav("move", "k"),
-	split_nav("move", "l"),
+	-- split_nav("move", "h"),
+	-- split_nav("move", "j"),
+	-- split_nav("move", "k"),
+	-- split_nav("move", "l"),
 }
 
 -- insert numbers to panes
