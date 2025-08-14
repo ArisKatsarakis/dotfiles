@@ -52,7 +52,7 @@ return {
 				"--stdin-filepath",
 				"$FILENAME",
 				"--tab-width",
-				"2",
+				"4",
 				"--use-tabs",
 				"false",
 			},
