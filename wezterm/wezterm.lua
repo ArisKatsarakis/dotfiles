@@ -22,13 +22,12 @@ config = {
 	window_decorations = "RESIZE",
 	use_fancy_tab_bar = false,
 	enable_tab_bar = true,
-	window_background_opacity = 1,
-	tab_bar = {
-		background = "transparent",
-	},
+	window_background_opacity = 0.8,
 	-- macos_window_background_blur = 35,
 }
-config.color_scheme = "nordfox"
+-- config.color_scheme = "nordfox"
+config.color_scheme = "Kanagawa (Gogh)"
+-- config.color_scheme = "Kanagawa Dragon (Gogh)"
 config.term = "xterm-256color"
 
 wezterm.on("gui-startup", function(cmd)
@@ -36,7 +35,7 @@ wezterm.on("gui-startup", function(cmd)
 	window:gui_window():maximize()
 end)
 
-config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
+config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2001 }
 -- split wezterm to panes
 local direction_keys = {
 	h = "Left",
@@ -44,26 +43,6 @@ local direction_keys = {
 	k = "Up",
 	l = "Right",
 }
-local function split_nav(resize_or_move, key)
-	return {
-		key = key,
-		mods = resize_or_move == "resize" and "CTRL|SHIFT" or "CTRL",
-		action = wezterm.action_callback(function(win, pane)
-			if is_vim(pane) then
-				-- pass the keys through to vim/nvim
-				win:perform_action({
-					SendKey = { key = key, mods = resize_or_move == "resize" and "CTRL|SHIFT" or "CTRL" },
-				}, pane)
-			else
-				if resize_or_move == "resize" then
-					win:perform_action({ AdjustPaneSize = { direction_keys[key], 5 } }, pane)
-				else
-					win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
-				end
-			end
-		end),
-	}
-end
 
 config.keys = {
 	{

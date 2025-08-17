@@ -14,23 +14,21 @@ end
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
+config.default_prog = { "powershell.exe" }
 config = {
 	-- color_scheme = "Nord",
 	-- color_scheme = "Afterglow",
 	font = wezterm.font("Hack Nerd Font Propo"),
-	font_size = 16.0,
+	font_size = 22.0,
 	window_decorations = "RESIZE",
 	use_fancy_tab_bar = false,
 	enable_tab_bar = true,
-	window_background_opacity = 1,
-	tab_bar_at_bottom = {
-		background = "transparent",
-	},
+	window_background_opacity = 0.8,
 	-- macos_window_background_blur = 35,
 }
-
-config.default_prog = { "powershell.exe" }
-config.color_scheme = "nordfox"
+-- config.color_scheme = "nordfox"
+config.color_scheme = "Kanagawa (Gogh)"
+-- config.color_scheme = "Kanagawa Dragon (Gogh)"
 config.term = "xterm-256color"
 
 wezterm.on("gui-startup", function(cmd)
