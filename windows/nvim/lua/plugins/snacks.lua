@@ -31,5 +31,6 @@ return {
     { "<leader>cc",      "<Cmd>:close<CR>",                                  desc = "close window" },
     { "<leader>bs",      function() Snacks.scratch() end,                    desc = "Toggle Scratch Buffer" },
     { "<leader>bS",      function() Snacks.scratch.select() end,             desc = "Select Scratch Buffer" },
+    { "<leader>fb",      function() Snacks.picker.buffers() end,             desc = "Select Active  Buffers" },
   }
 }

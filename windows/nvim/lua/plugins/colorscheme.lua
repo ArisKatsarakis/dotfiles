@@ -140,23 +140,6 @@ return { -- Lua
 	-- 	end,
 	-- },
 	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			local lualine = require("lualine")
-			lualine.setup({
-				options = {
-					transparent = true,
-				},
-				sections = {
-					lualine_a = { "mode", "branch" },
-					lualine_b = {},
-					lualine_c = {},
-				},
-			})
-		end,
-	},
-	{
 		"tribela/transparent.nvim",
 		event = "VimEnter",
 		config = true,
