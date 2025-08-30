@@ -9,7 +9,7 @@ local state = {
 local job_id = 0
 function PostingTerm()
 	if not vim.api.nvim_win_is_valid(state.floating.win) then
-		state.floating = l.OpenCenteredBuffer({ buf = state.floating.buf })
+		state.floating = l.OpenCenteredBuffer({ buf = state.floating.buf, title = "Postman" })
 		if vim.bo[state.floating.buf].buftype ~= "terminal" then
 			vim.cmd.terminal()
 			vim.cmd("setlocal nobuflisted")
@@ -78,7 +78,7 @@ end
 local build_job_id = 0
 function ProjecBuildTerm()
 	if not vim.api.nvim_win_is_valid(buildState.floating.win) then
-		buildState.floating = l.OpenCenteredBuffer({ buf = buildState.floating.buf })
+		buildState.floating = l.OpenCenteredBuffer({ buf = buildState.floating.buf, title = "Project build" })
 		if vim.bo[buildState.floating.buf].buftype ~= "terminal" then
 			vim.cmd.terminal()
 			vim.cmd("setlocal nobuflisted")

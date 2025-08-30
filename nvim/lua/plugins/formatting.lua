@@ -38,6 +38,7 @@ return {
 				liquid = { "prettier" },
 				lua = { "stylua" },
 				markdown = { "prettier", "markdown-toc" },
+				java = { "clang-format" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

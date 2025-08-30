@@ -19,6 +19,8 @@ function M.OpenCenteredBuffer(opts)
 		row = math.floor((vim.o.lines - height) / 2),
 		style = "minimal",
 		border = "rounded",
+		title = opts.title,
+		title_pos = "center",
 	}
 	local buf = nil
 	if vim.api.nvim_buf_is_valid(opts.buf) then

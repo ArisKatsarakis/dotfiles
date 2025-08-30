@@ -132,6 +132,29 @@ return {
 			{ capabilities = capabilities },
 		})
 
+		--
+
+		-- lspconfig.dartls.setup({
+		-- 	-- Command to start the server (assumes 'dart' is in your PATH from the Dart/Flutter SDK)
+		-- 	cmd = { "dart", "language-server", "--protocol=lsp" },
+		-- 	filetypes = { "dart" },
+		-- 	root_dir = require("lspconfig.util").root_pattern("pubspec.yaml"), -- Detects Flutter/Dart projects
+		-- 	init_options = {
+		-- 		closingLabels = true,
+		-- 		flutterOutline = true,
+		-- 		onlyAnalyzeProjectsWithOpenFiles = true,
+		-- 		outline = true,
+		-- 		suggestFromUnimportedLibraries = false,
+		-- 	},
+		-- 	settings = {
+		-- 		dart = {
+		-- 			completeFunctionCalls = true,
+		-- 			showTodos = true,
+		-- 		},
+		-- 	},
+		-- 	capabilities = { textDocument = { synchronization = { didChangeKind = 1 } } },
+		-- })
+		-- vim.lsp.enable("dartls")
 		-- enable formmating on save
 		-- vim.api.nvim_create_autocmd('LspAttach', {
 		--         callback = function(args)
