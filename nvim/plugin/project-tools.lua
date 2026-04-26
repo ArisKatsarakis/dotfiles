@@ -48,6 +48,14 @@ local buildFiles = {
 		buildFile = "pom.xml",
 		command = "mvn spring-boot:run \r\n",
 	},
+	php = {
+		buildFile = "composer.json",
+		command = "composer run dev \r\n",
+	},
+	dart = {
+		buildFile = "pubspec.yaml",
+		command = "flutter run \r\n",
+	},
 }
 
 function FindProjectCommand()

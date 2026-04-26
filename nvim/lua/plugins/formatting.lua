@@ -30,7 +30,7 @@ return {
 				javascriptreact = { "biome-check" },
 				typescriptreact = { "biome-check" },
 				css = { "biome-check" },
-				html = { "biome-check" },
+				html = { "prettier" },
 				svelte = { "prettier" },
 				json = { "prettier" },
 				yaml = { "prettier" },
@@ -39,6 +39,7 @@ return {
 				lua = { "stylua" },
 				markdown = { "prettier", "markdown-toc" },
 				java = { "clang-format" },
+				php = { "phpcs" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
@@ -53,7 +54,7 @@ return {
 				"--stdin-filepath",
 				"$FILENAME",
 				"--tab-width",
-				"4",
+				"2",
 				"--use-tabs",
 				"false",
 			},
@@ -71,3 +72,14 @@ return {
 		end, { desc = "Format whole file or range (in visual mode) with" })
 	end,
 }
+-- return {
+-- 	"nvimdev/guard.nvim",
+-- 	dependencies = "nvimdev/guard-collection",
+-- 	config = function()
+-- 		vim.lsp.buf.format({ "clang-format" })
+-- 		local ft = require("guard.filetype")
+-- 		ft("c"):fmt("clang-format")
+-- 		ft("lua"):fmt("stylua")
+-- 		ft("html"):fmt("prettier")
+-- 	end,
+-- }

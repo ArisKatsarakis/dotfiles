@@ -14,8 +14,11 @@ return {
 				on_attach = function(client, bufnr)
 					local opts = { buffer = bufnr, noremap = true, silent = true }
 					vim.keymap.set("n", "<leader>fr", "<cmd>FlutterRun<CR>", opts)
-					vim.keymap.set("n", "<leader>fh", "<cmd>FlutterHotReload<CR>", opts)
+					vim.keymap.set("n", "<leader>fR", "<cmd>FlutterRestart<CR>", opts)
+					vim.keymap.set("n", "<leader>fh", "<cmd>FlutterReload<CR>", opts)
 					vim.keymap.set("n", "<leader>fo", "<cmd>FlutterOutlineToggle<CR>", opts)
+					vim.keymap.set("n", "<leader>fl", "<cmd>FlutterLogToggle<CR>", opts)
+					vim.keymap.set("n", "<leader>fq", "<cmd>FlutterQuit<CR>", opts)
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 				end,
 				capabilities = require("cmp_nvim_lsp").default_capabilities(),
@@ -24,6 +27,5 @@ return {
 			widget_guides = { enabled = true }, -- Show widget guides
 		})
 		-- Attach dartls explicitly
-		require("lspconfig").dartls.setup({})
 	end,
 }

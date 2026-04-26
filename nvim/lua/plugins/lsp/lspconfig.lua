@@ -81,13 +81,97 @@ return {
 		-- as mason setup_handlers is deprecated & its causing issues with lsp settings
 		--
 		-- Setup servers
-		local lspconfig = require("lspconfig")
+		local lspconfig = vim.lsp.protocol.make_client_capabilities()
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local capabilities = cmp_nvim_lsp.default_capabilities()
+		local capabilities = cmp_nvim_lsp.default_capabilities(lspconfig)
 
 		-- Config lsp servers here
 		-- lua_ls
-		lspconfig.lua_ls.setup({
+		vim.lsp.enable({
+			"lua_ls",
+			"ts_ls",
+			"gopls",
+			"html",
+			"cssls",
+			"clangd",
+			"intelephense",
+			"laravel_ls",
+			"tailwindcss",
+			"angularls",
+		})
+
+		local project_library_path = "/path/to/project/lib"
+		local cmd = {
+			"ngserver",
+			"--stdio",
+			"--tsProbeLocations",
+			project_library_path,
+			"--ngProbeLocations",
+			project_library_path,
+		}
+		vim.lsp.config("angularls", {
+			capabilities = capabilities,
+			-- cmd = cmd,
+			filetypes = { "typescript", "html", "typescriptreact", "htmlangular" },
+			root_markers = { "angular.json", "nx.json" },
+		})
+		vim.lsp.config("tailwindcss", {
+			capabilities = capabilities,
+			cmd = { "tailwindcss-language-server", "--stdio" },
+			filetypes = {
+				"aspnetcorerazor",
+				"astro",
+				"astro-markdown",
+				"blade",
+				"clojure",
+				"django-html",
+				"htmldjango",
+				"edge",
+				"eelixir",
+				"elixir",
+				"ejs",
+				"erb",
+				"eruby",
+				"gohtml",
+				"gohtmltmpl",
+				"haml",
+				"handlebars",
+				"hbs",
+				"html",
+				"htmlangular",
+				"html-eex",
+				"heex",
+				"jade",
+				"leaf",
+				"liquid",
+				"markdown",
+				"mdx",
+				"mustache",
+				"njk",
+				"nunjucks",
+				"php",
+				"razor",
+				"slim",
+				"twig",
+				"css",
+				"less",
+				"postcss",
+				"sass",
+				"scss",
+				"stylus",
+				"sugarss",
+				"javascript",
+				"javascriptreact",
+				"reason",
+				"rescript",
+				"typescript",
+				"typescriptreact",
+				"vue",
+				"svelte",
+				"templ",
+			},
+		})
+		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,
 			settings = {
 				Lua = {
@@ -107,14 +191,22 @@ return {
 			},
 		})
 
-		-- ts_ls (replaces tsserver)
-		lspconfig.ts_ls.setup({
+		-- local wp = require("wordpress")
+		vim.lsp.config("intelephense", {
 			capabilities = capabilities,
-			root_dir = function(fname)
-				local util = lspconfig.util
-				return not util.root_pattern("deno.json", "deno.jsonc")(fname)
-					and util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git")(fname)
-			end,
+			filetypes = { "php", "blade", "php_only" },
+		})
+		vim.lsp.config("laravel_ls", {
+			filetypes = { "php", "blade" },
+		})
+		-- ts_ls (replaces tsserver)
+		vim.lsp.config("ts_ls", {
+			capabilities = capabilities,
+			-- root_dir = function(fname)
+			-- 	local util = lspconfig.util
+			-- 	return not util.root_pattern("deno.json", "deno.jsonc")(fname)
+			-- 		and util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git")(fname)
+			-- end,
 			single_file_support = false,
 			init_options = {
 				preferences = {
@@ -124,18 +216,17 @@ return {
 			},
 		})
 
-		lspconfig.gopls.setup({ capabilities = capabilities })
-		lspconfig.html.setup({ capabilities = capabilities })
-		lspconfig.cssls.setup({ capabilities = capabilities })
-		lspconfig.clangd.setup({
+		vim.lsp.config("gopls", { capabilities = capabilities })
+		vim.lsp.config("html", { capabilities = capabilities })
+		vim.lsp.config("cssls", { capabilities = capabilities })
+		vim.lsp.config("clangd", {
 			cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
 			{ capabilities = capabilities },
 		})
-
 		--
-
+		-- --
+		--
 		-- lspconfig.dartls.setup({
-		-- 	-- Command to start the server (assumes 'dart' is in your PATH from the Dart/Flutter SDK)
 		-- 	cmd = { "dart", "language-server", "--protocol=lsp" },
 		-- 	filetypes = { "dart" },
 		-- 	root_dir = require("lspconfig.util").root_pattern("pubspec.yaml"), -- Detects Flutter/Dart projects
@@ -154,6 +245,8 @@ return {
 		-- 	},
 		-- 	capabilities = { textDocument = { synchronization = { didChangeKind = 1 } } },
 		-- })
+		--
+
 		-- vim.lsp.enable("dartls")
 		-- enable formmating on save
 		-- vim.api.nvim_create_autocmd('LspAttach', {

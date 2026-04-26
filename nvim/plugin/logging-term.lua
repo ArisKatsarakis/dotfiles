@@ -9,7 +9,7 @@ local state = {
 local job_id = 0
 function TermCenter()
 	if not vim.api.nvim_win_is_valid(state.floating.win) then
-		state.floating = l.OpenCenteredBuffer({ buf = state.floating.buf, title = "Termial" })
+		state.floating = l.OpenCenteredBuffer({ buf = state.floating.buf, title = "Terminal" })
 		if vim.bo[state.floating.buf].buftype ~= "terminal" then
 			vim.cmd.terminal()
 			vim.cmd("setlocal nobuflisted")
