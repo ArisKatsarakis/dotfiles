@@ -1,21 +1,18 @@
-     
-live_config_reload= true
+general.live_config_reload= true
 
-import = [
-    "/Users/macbook/.config/alacritty/alacritty-theme/themes/dracula.toml"
+general.import = [
+    "/Users/diaolos/.config/alacritty/themes/themes/catppuccin_frappe.toml"
 ]
 
 [window]
 decorations = "buttonless"
 dynamic_padding = false
-opacity = 0.8
-blur = true
+opacity = 1.0
+blur = false
 
 [font]
-size = 14.0
+size = 22.0
 
 [font.normal]
-
 family = 'Hack Nerd Font Propo'
 style = 'Regular'
-

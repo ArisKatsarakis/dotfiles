@@ -70,9 +70,14 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+#
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 plugins=(git zsh-autosuggestions   docker docker-compose)
 ### Fix for making Docker plugin work
 autoload -U compinit && compinit
+
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
 ###
 source $ZSH/oh-my-zsh.sh
 
@@ -104,15 +109,24 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias oo="cd /Users/macbook/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/iPhone\ Vault"
+alias oo="cd /Users/diaolos/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/iPhone\ Vault"
 alias ls="ls -al"
-alias nc="cd ~/.config/nvim"
+# alias nc="cd ~/.config/nvim"
+alias g="git"
+alias a="add"
+alias cls="clear"
+alias t="sh ~/github/scripts/tmux-sessionizer.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 export PATH="/opt/homebrew/opt/bison/bin:$PATH"
 export EDITOR=nvim
-
+# java version 21
+#export JAVA_HOME="/opt/homebrew/Cellar/openjdk@21/21.0.7"
+# java version 17
+export JAVA_HOME="/opt/homebrew/Cellar/openjdk@17/17.0.15"
+# java version 8
+#export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home/"
+export PATH="$JAVA_HOME:$PATH"
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
@@ -121,3 +135,28 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+export PATH="/Users/diaolos/.local/bin:$PATH"
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+export PATH=$PATH:$HOME/.local/opt/go/bin
+export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/develop/flutter/bin
+
+export PATH=$PATH:$HOME/Library/Android/sdk/cmdline-tools/latest/bin
+export PATH=$PATH:$HOME/Library/Android/sdk/emulator
+export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/Users/diaolos/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/Users/diaolos/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval "$(zoxide init zsh)"
