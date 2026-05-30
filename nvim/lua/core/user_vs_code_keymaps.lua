@@ -33,8 +33,9 @@ keymap({ "n", "v" }, "<leader>co", "<cmd>lua require('vscode').action('editor.ac
 keymap({ "n", "v" }, "<leader>e", "<cmd>lua require('vscode').action('workbench.view.explorer')<CR>")
 keymap({ "n", "v" }, "<S-L>", "<cmd>lua require('vscode').action('workbench.action.nextEditor')<CR>")
 keymap({ "n", "v" }, "<S-H>", "<cmd>lua require('vscode').action('workbench.action.previousEditor')<CR>")
+--
 
--- -- harpoon git.openChangekeymaps
+---- harpoon git.openChangekeymaps
 -- keymap({"n", "v"}, "<leader>ha", "<cmd>lua require('vscode').action('vscode-harpoon.addEditor')<CR>")
 -- keymap({"n", "v"}, "<leader>ho", "<cmd>lua require('vscode').action('vscode-harpoon.editorQuickPick')<CR>")
 -- keymap({"n", "v"}, "<leader>he", "<cmd>lua require('vscode').action('vscode-harpoon.editEditors')<CR>")

@@ -7,6 +7,11 @@ return {
 		-- your configuration comes here
 		-- or leave it empty to use the default settings
 		-- refer to the configuration section below
+		--
+		animate = {
+			easing = "linear",
+			fps = 120,
+		},
 		bigfile = { enabled = true },
 		dashboard = { enabled = true },
 		explorer = { enabled = true },
@@ -78,6 +83,12 @@ return {
 				Snacks.scratch.select()
 			end,
 			desc = "Select Scratch Buffer",
+		},
+		{
+			"<leader>e",
+			function()
+				Snacks.explorer.reveal()
+			end,
 		},
 	},
 }

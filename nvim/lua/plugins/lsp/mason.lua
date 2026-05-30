@@ -29,29 +29,26 @@ return {
 			-- servers for mason to install
 			ensure_installed = {
 				"lua_ls",
+				"jdtls",
 				"ts_ls",
 				"html",
 				"cssls",
-				"gopls",
-				"eslint",
-				"marksman",
-				"jdtls",
-				"intelephense",
-				"laravel_ls",
-				"tailwindcss",
-				"angularls",
+				-- "gopls",
+				-- "eslint",
+				-- "marksman",
+				-- "intelephense",
+				-- "laravel_ls",
+				-- "tailwindcss",
+				-- "angularls",
 			},
 		})
 
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"prettier", -- prettier formatter
-				"stylua", -- lua formatter
-				"typescript-language-server",
-				"clangd",
-				"clang-format",
-				"codelldb",
-				-- { "eslint_d", version = "13.1.2" },
+				"google-java-format",
+				"prettier",
+				"stylua",
+				"eslint_d",
 			},
 			-- NOTE: mason BREAKING Change! Removed setup_handlers
 			-- moved lsp configuration settings back into lspconfig.lua file

@@ -85,92 +85,101 @@ return {
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local capabilities = cmp_nvim_lsp.default_capabilities(lspconfig)
 
+		vim.lsp.config("ts_ls", {
+			capabilities = capabilities,
+			root_markers = { "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb", "bun.lock" },
+		})
+
+		vim.lsp.config("emmet_ls", {
+			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+		})
 		-- Config lsp servers here
 		-- lua_ls
 		vim.lsp.enable({
 			"lua_ls",
 			"ts_ls",
-			"gopls",
-			"html",
-			"cssls",
-			"clangd",
-			"intelephense",
-			"laravel_ls",
-			"tailwindcss",
-			"angularls",
+			"emmet_ls",
+			-- "gopls",
+			-- "html",
+			-- "cssls",
+			-- "clangd",
+			-- "intelephense",
+			-- "laravel_ls",
+			-- "tailwindcss",
+			-- "angularls",
 		})
 
-		local project_library_path = "/path/to/project/lib"
-		local cmd = {
-			"ngserver",
-			"--stdio",
-			"--tsProbeLocations",
-			project_library_path,
-			"--ngProbeLocations",
-			project_library_path,
-		}
-		vim.lsp.config("angularls", {
-			capabilities = capabilities,
-			-- cmd = cmd,
-			filetypes = { "typescript", "html", "typescriptreact", "htmlangular" },
-			root_markers = { "angular.json", "nx.json" },
-		})
-		vim.lsp.config("tailwindcss", {
-			capabilities = capabilities,
-			cmd = { "tailwindcss-language-server", "--stdio" },
-			filetypes = {
-				"aspnetcorerazor",
-				"astro",
-				"astro-markdown",
-				"blade",
-				"clojure",
-				"django-html",
-				"htmldjango",
-				"edge",
-				"eelixir",
-				"elixir",
-				"ejs",
-				"erb",
-				"eruby",
-				"gohtml",
-				"gohtmltmpl",
-				"haml",
-				"handlebars",
-				"hbs",
-				"html",
-				"htmlangular",
-				"html-eex",
-				"heex",
-				"jade",
-				"leaf",
-				"liquid",
-				"markdown",
-				"mdx",
-				"mustache",
-				"njk",
-				"nunjucks",
-				"php",
-				"razor",
-				"slim",
-				"twig",
-				"css",
-				"less",
-				"postcss",
-				"sass",
-				"scss",
-				"stylus",
-				"sugarss",
-				"javascript",
-				"javascriptreact",
-				"reason",
-				"rescript",
-				"typescript",
-				"typescriptreact",
-				"vue",
-				"svelte",
-				"templ",
-			},
-		})
+		-- local project_library_path = "/path/to/project/lib"
+		-- local cmd = {
+		-- 	"ngserver",
+		-- 	"--stdio",
+		-- 	"--tsProbeLocations",
+		-- 	project_library_path,
+		-- 	"--ngProbeLocations",
+		-- 	project_library_path,
+		-- }
+		-- vim.lsp.config("angularls", {
+		-- 	capabilities = capabilities,
+		-- 	-- cmd = cmd,
+		-- 	filetypes = { "typescript", "html", "typescriptreact", "htmlangular" },
+		-- 	root_markers = { "angular.json", "nx.json" },
+		-- })
+		-- vim.lsp.config("tailwindcss", {
+		-- 	capabilities = capabilities,
+		-- 	cmd = { "tailwindcss-language-server", "--stdio" },
+		-- 	filetypes = {
+		-- 		"aspnetcorerazor",
+		-- 		"astro",
+		-- 		"astro-markdown",
+		-- 		"blade",
+		-- 		"clojure",
+		-- 		"django-html",
+		-- 		"htmldjango",
+		-- 		"edge",
+		-- 		"eelixir",
+		-- 		"elixir",
+		-- 		"ejs",
+		-- 		"erb",
+		-- 		"eruby",
+		-- 		"gohtml",
+		-- 		"gohtmltmpl",
+		-- 		"haml",
+		-- 		"handlebars",
+		-- 		"hbs",
+		-- 		"html",
+		-- 		"htmlangular",
+		-- 		"html-eex",
+		-- 		"heex",
+		-- 		"jade",
+		-- 		"leaf",
+		-- 		"liquid",
+		-- 		"markdown",
+		-- 		"mdx",
+		-- 		"mustache",
+		-- 		"njk",
+		-- 		"nunjucks",
+		-- 		"php",
+		-- 		"razor",
+		-- 		"slim",
+		-- 		"twig",
+		-- 		"css",
+		-- 		"less",
+		-- 		"postcss",
+		-- 		"sass",
+		-- 		"scss",
+		-- 		"stylus",
+		-- 		"sugarss",
+		-- 		"javascript",
+		-- 		"javascriptreact",
+		-- 		"reason",
+		-- 		"rescript",
+		-- 		"typescript",
+		-- 		"typescriptreact",
+		-- 		"vue",
+		-- 		"svelte",
+		-- 		"templ",
+		-- 	},
+		-- })
 		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,
 			settings = {
@@ -192,37 +201,37 @@ return {
 		})
 
 		-- local wp = require("wordpress")
-		vim.lsp.config("intelephense", {
-			capabilities = capabilities,
-			filetypes = { "php", "blade", "php_only" },
-		})
-		vim.lsp.config("laravel_ls", {
-			filetypes = { "php", "blade" },
-		})
-		-- ts_ls (replaces tsserver)
-		vim.lsp.config("ts_ls", {
-			capabilities = capabilities,
-			-- root_dir = function(fname)
-			-- 	local util = lspconfig.util
-			-- 	return not util.root_pattern("deno.json", "deno.jsonc")(fname)
-			-- 		and util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git")(fname)
-			-- end,
-			single_file_support = false,
-			init_options = {
-				preferences = {
-					includeCompletionsWithSnippetText = true,
-					includeCompletionsForImportStatements = true,
-				},
-			},
-		})
-
-		vim.lsp.config("gopls", { capabilities = capabilities })
-		vim.lsp.config("html", { capabilities = capabilities })
-		vim.lsp.config("cssls", { capabilities = capabilities })
-		vim.lsp.config("clangd", {
-			cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
-			{ capabilities = capabilities },
-		})
+		-- vim.lsp.config("intelephense", {
+		-- 	capabilities = capabilities,
+		-- 	filetypes = { "php", "blade", "php_only" },
+		-- })
+		-- vim.lsp.config("laravel_ls", {
+		-- 	filetypes = { "php", "blade" },
+		-- })
+		-- -- ts_ls (replaces tsserver)
+		-- vim.lsp.config("ts_ls", {
+		-- 	capabilities = capabilities,
+		-- 	-- root_dir = function(fname)
+		-- 	-- 	local util = lspconfig.util
+		-- 	-- 	return not util.root_pattern("deno.json", "deno.jsonc")(fname)
+		-- 	-- 		and util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git")(fname)
+		-- 	-- end,
+		-- 	single_file_support = false,
+		-- 	init_options = {
+		-- 		preferences = {
+		-- 			includeCompletionsWithSnippetText = true,
+		-- 			includeCompletionsForImportStatements = true,
+		-- 		},
+		-- 	},
+		-- })
+		--
+		-- vim.lsp.config("gopls", { capabilities = capabilities })
+		-- vim.lsp.config("html", { capabilities = capabilities })
+		-- vim.lsp.config("cssls", { capabilities = capabilities })
+		-- vim.lsp.config("clangd", {
+		-- 	cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
+		-- 	{ capabilities = capabilities },
+		-- })
 		--
 		-- --
 		--

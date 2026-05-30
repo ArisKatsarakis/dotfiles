@@ -58,3 +58,4 @@ end)
 -- tabs next/previous
 vim.keymap.set("n", "<leader>tn", "<Cmd>:tabn<CR>")
 vim.keymap.set("n", "<leader>tp", "<Cmd>:tabp<CR>")
+vim.keymap.set("n", "<leader>ob", ":Obsidian<CR>", { desc = "Obsidian cli" })

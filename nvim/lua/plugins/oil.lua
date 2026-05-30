@@ -10,7 +10,6 @@ return {
   lazy = false,
   config = function()
     require("oil").setup()
-    vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent dir" })
     vim.keymap.set("n", "<leader>ee", require("oil").toggle_float, { desc = "toggle float oil"})
   end,
 
