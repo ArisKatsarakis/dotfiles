@@ -93,6 +93,18 @@ return {
 		vim.lsp.config("emmet_ls", {
 			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
 		})
+
+		vim.lsp.config("laravel_ls", {
+			capabilities = capabilities,
+			-- Blade template support
+			filetypes = { "php", "blade" },
+		})
+
+		vim.lsp.config("intelephense", {
+			capabilities = capabilities,
+			filetypes = { "php" },
+		})
+
 		-- Config lsp servers here
 		-- lua_ls
 		vim.lsp.enable({
@@ -103,27 +115,35 @@ return {
 			-- "html",
 			-- "cssls",
 			-- "clangd",
-			-- "intelephense",
-			-- "laravel_ls",
+			"intelephense",
+			"laravel_ls",
 			-- "tailwindcss",
-			-- "angularls",
+			"angularls",
 		})
 
-		-- local project_library_path = "/path/to/project/lib"
-		-- local cmd = {
-		-- 	"ngserver",
-		-- 	"--stdio",
-		-- 	"--tsProbeLocations",
-		-- 	project_library_path,
-		-- 	"--ngProbeLocations",
-		-- 	project_library_path,
-		-- }
-		-- vim.lsp.config("angularls", {
-		-- 	capabilities = capabilities,
-		-- 	-- cmd = cmd,
-		-- 	filetypes = { "typescript", "html", "typescriptreact", "htmlangular" },
-		-- 	root_markers = { "angular.json", "nx.json" },
-		-- })
+		local project_root = vim.fn.getcwd()
+		-- local ts_path = project_root .. "/node_modules"
+		local ng_path = vim.fn.expand("~/.local/share/nvim/mason/packages/angular-language-server/node_modules/@angular/language-server")
+
+		-- local project_library_path = "/Users/diaolos/github/angular/angular-testing"
+		local cmd = {
+			"ngserver",
+			"--stdio",
+			"--tsProbeLocations",project_root,
+			"--ngProbeLocations",ng_path,
+		}
+
+		vim.lsp.config("angularls", {
+			cmd = cmd,
+			capabilities = capabilities,
+			filetypes = { "typescript", "html", "typescriptreact", "htmlangular" },
+			root_markers = { "angular.json", "nx.json" },
+			on_new_config = function(new_config)
+				local root = vim.fn.getcwd()
+				new_config.cmd[4] = root .. "/node_modules," .. ng_path
+			end,
+		})
+
 		-- vim.lsp.config("tailwindcss", {
 		-- 	capabilities = capabilities,
 		-- 	cmd = { "tailwindcss-language-server", "--stdio" },
@@ -235,26 +255,26 @@ return {
 		--
 		-- --
 		--
-		-- lspconfig.dartls.setup({
-		-- 	cmd = { "dart", "language-server", "--protocol=lsp" },
-		-- 	filetypes = { "dart" },
-		-- 	root_dir = require("lspconfig.util").root_pattern("pubspec.yaml"), -- Detects Flutter/Dart projects
-		-- 	init_options = {
-		-- 		closingLabels = true,
-		-- 		flutterOutline = true,
-		-- 		onlyAnalyzeProjectsWithOpenFiles = true,
-		-- 		outline = true,
-		-- 		suggestFromUnimportedLibraries = false,
-		-- 	},
-		-- 	settings = {
-		-- 		dart = {
-		-- 			completeFunctionCalls = true,
-		-- 			showTodos = true,
-		-- 		},
-		-- 	},
-		-- 	capabilities = { textDocument = { synchronization = { didChangeKind = 1 } } },
-		-- })
-		--
+
+		vim.lsp.config("dartls", {
+			cmd = { "dart", "language-server", "--protocol=lsp" },
+			filetypes = { "dart" },
+			root_dir = require("lspconfig.util").root_pattern("pubspec.yaml"), -- Detects Flutter/Dart projects
+			init_options = {
+				closingLabels = true,
+				flutterOutline = true,
+				onlyAnalyzeProjectsWithOpenFiles = true,
+				outline = true,
+				suggestFromUnimportedLibraries = false,
+			},
+			settings = {
+				dart = {
+					completeFunctionCalls = true,
+					showTodos = true,
+				},
+			},
+			capabilities = { textDocument = { synchronization = { didChangeKind = 1 } } },
+		})
 
 		-- vim.lsp.enable("dartls")
 		-- enable formmating on save

@@ -1,11 +1,22 @@
 -- lua/plugins/rose-pine.lua
 return {
-	"rose-pine/neovim",
-	name = "rose-pine",
+	"loctvl842/monokai-pro.nvim",
+	lazy = false,
+	priority = 1000,
 	config = function()
-		vim.cmd("colorscheme rose-pine")
+		require("monokai-pro").setup({
+			filter = "spectrum", -- classic | octagon | pro | machine | ristretto | spectrum
+		})
+		vim.cmd.colorscheme("monokai-pro")
 	end,
 }
+-- return {
+-- 	"rose-pine/neovim",
+-- 	name = "rose-pine",
+-- 	config = function()
+-- 		vim.cmd("colorscheme rose-pine")
+-- 	end,
+-- }
 -- return {
 -- 	"catppuccin/nvim",
 -- 	name = "catppuccin",

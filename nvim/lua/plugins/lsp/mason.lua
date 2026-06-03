@@ -33,13 +33,13 @@ return {
 				"ts_ls",
 				"html",
 				"cssls",
-				-- "gopls",
+				"laravel_ls",
+				 -- "dartls",
 				-- "eslint",
 				-- "marksman",
-				-- "intelephense",
-				-- "laravel_ls",
+				"intelephense",
 				-- "tailwindcss",
-				-- "angularls",
+				"angularls",
 			},
 		})
 
@@ -49,6 +49,8 @@ return {
 				"prettier",
 				"stylua",
 				"eslint_d",
+                "pint",
+                "phpcs"
 			},
 			-- NOTE: mason BREAKING Change! Removed setup_handlers
 			-- moved lsp configuration settings back into lspconfig.lua file

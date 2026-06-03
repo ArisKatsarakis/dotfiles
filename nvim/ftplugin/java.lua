@@ -1,5 +1,5 @@
 local home = os.getenv("HOME")
-local javaBin = '/bin/java'
+local javaBin = '/opt/homebrew/Cellar/openjdk/25.0.2/bin/java'
 local jdtls = require("jdtls")
 
 -- File types that signify a Java project's root directory. This will be

@@ -12,6 +12,7 @@ return {
 			typescript = { "eslint_d" },
 			javascriptreact = { "eslint_d" },
 			typescriptreact = { "eslint_d" },
+			php = { "phpcs" },
 		}
 
 		eslint.args = {
@@ -24,6 +25,7 @@ return {
 				return vim.fn.expand("%:p")
 			end,
 		}
+
 
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 			group = lint_augroup,
